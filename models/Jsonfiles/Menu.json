@@ -1,0 +1,36 @@
+{
+    "menu": [
+        {
+        "name": "projects",
+        "link": "/projects",
+        "submenu": [
+            {
+            "name": "Subitem 1",
+            "link": "/home/subitem1"
+            },
+            {
+            "name": "Subitem 2",
+            "link": "/home/subitem2"
+            }
+        ]
+        },
+        {
+        "name": "Deal Dashboard",
+        "link": "/deal-dashboard"
+        },
+        {
+        "name": "Administration",
+        "link": "/administration",
+        "submenu": [
+            {
+            "name": "User Management",
+            "link": "/admin/user-management"
+            },
+            {
+            "name": "Settings",
+            "link": "/admin/settings"
+            }
+        ]
+        }
+    ]
+}
