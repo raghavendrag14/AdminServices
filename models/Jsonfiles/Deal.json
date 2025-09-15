@@ -1,0 +1,13 @@
+{
+    "dealname": "String",   
+    "amount": "Number",   
+      "closingdate": "Date",   
+      "stage": "String",   
+      "leadsource": "String",      
+      "description": "String",    
+      "expectedrevenue": "Number",   
+      "createdby": "String",   
+      "modifiedby": "String",   
+      "createdat": "Date",   
+      "updatedat": "Date"   
+}

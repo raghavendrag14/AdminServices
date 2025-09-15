@@ -1,0 +1,18 @@
+{
+    "dealname": "String",
+    "amount": "Number", 
+    "closingdate": "Date",
+    "stage": "String",           
+    "description": "String",
+    "contact": "String",
+    "company": "String",    
+    "owner": "String",
+    "createdby": "String",
+    "createdat": "Date",    
+    "updatedat": "Date",
+    "isdeleted": "Boolean",
+    "deletedat": "Date",
+    "deletedby": "String",
+    "expectedrevenue": "Number",
+    "dealsource": "String"
+}

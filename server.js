@@ -8,6 +8,7 @@ const rateLimit = require("express-rate-limit");
 const authRoutes = require("./routes/auth.routes");
 const userRoutes = require("./routes/user.routes");
 const roleRoutes = require("./routes/role.routes")
+const modulemasterRoutes = require("./routes/modulemaster.routes");
 const app = express();
 
 // // Security + parsing
@@ -38,7 +39,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/roles",roleRoutes );
-
+app.use("/modulemaster", modulemasterRoutes);
 // 404 handler
 app.use((req, res) => res.status(404).json({ message: "Not found route" }));
 

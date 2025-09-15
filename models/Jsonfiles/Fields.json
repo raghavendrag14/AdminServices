@@ -1,20 +1,23 @@
 {
-    "FieldsModule":{
-        "label":"projects",
-        "code":"PROJECTS",
-        "fieldDetails":[
-            {
-                "id":1,
-                "code":"PROJECTSTATUS",
-                "label":"Project Status",
-                "defaultvalue":"In Progress",
-                "options":[
-                    {"id" :12,"label":"In Progress","value":"INPROGRESS"},
-                    {"id" :13,"label":"Completed","value":"COMPLETED"},
-                    {"id" :14,"label":"On Hold","value":"ONHOLD"},
-                    {"id" :15,"label":"Cancelled","value":"CANCELLED"}
-                ]
-            }
-        ]
+  "moduleName": "User Profile",
+  "moduleCode": "USER_PROFILE",
+  "dropdowns": [
+    {
+      "fieldName": "gender",
+      "displayName": "Gender",
+      "options": [
+        { "label": "Male", "value": "M", "isActive": true },
+        { "label": "Female", "value": "F", "isActive": true },
+        { "label": "Other", "value": "O", "isActive": true }
+      ]
+    },
+    {
+      "fieldName": "status",
+      "displayName": "User Status",
+      "options": [
+        { "label": "Active", "value": "ACTIVE" },
+        { "label": "Inactive", "value": "INACTIVE" }
+      ]
     }
+  ]
 }
