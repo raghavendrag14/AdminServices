@@ -1,38 +1,33 @@
-const { body } = require("express-validator");
-// models/Role.js
-const mongoose = require('mongoose');
+const { body, param, validationResult } = require('express-validator');
 
-const roleSchema = new mongoose.Schema(
-  {
-    roleName: {
-      type: String,
-      required: [true, 'Role name is required'],
-      unique: true,
-      trim: true,
-      minlength: [3, 'Role name must be at least 3 characters long'],
-      maxlength: [50, 'Role name cannot exceed 50 characters']
-    },
-    roleCode: {
-      type: String,
-      required: [true, 'Role code is required'],
-      unique: true,
-      uppercase: true,
-      trim: true,
-      minlength: [2, 'Role code must be at least 2 characters'],
-      maxlength: [20, 'Role code cannot exceed 20 characters'],
-      match: [/^[A-Z_]+$/, 'Role code must be uppercase letters and underscores only']
-    },
-    privileges: {
-      type: [String],
-      validate: {
-        validator: function (arr) {
-          return arr.length > 0; // at least one privilege required
-        },
-        message: 'At least one privilege must be assigned'
-      }
-    }
-  },
-  { timestamps: true }
-);
+const createRoleValidation = [
+  body('roleName').isString().trim().isLength({ min: 3, max: 50 }).withMessage('roleName is required (3-50 chars)'),
+  body('roleCode').isString().trim().isLength({ min: 2, max: 20 }).matches(/^[A-Z_]+$/).withMessage('roleCode is required and must be uppercase letters/underscores'),
+  body('privileges').isArray({ min: 1 }).withMessage('privileges must be a non-empty array'),
+  body('privileges.*').isMongoId().withMessage('privileges must contain valid privilege ids')
+];
 
-module.exports = mongoose.model('Role', roleSchema);
+const updateRoleValidation = [
+  body('id').isMongoId().withMessage('Valid role id is required'),
+  body('roleName').optional().isString().trim().isLength({ min: 3, max: 50 }),
+  body('roleCode').optional().isString().trim().isLength({ min: 2, max: 20 }).matches(/^[A-Z_]+$/),
+  body('privileges').optional().isArray({ min: 1 }),
+  body('privileges.*').optional().isMongoId()
+];
+
+const idParamValidation = [
+  param('id').isMongoId().withMessage('Valid id param required')
+];
+
+function runValidation(req, res, next) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+  next();
+}
+
+module.exports = {
+  createRoleValidation,
+  updateRoleValidation,
+  idParamValidation,
+  runValidation
+};

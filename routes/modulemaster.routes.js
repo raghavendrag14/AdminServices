@@ -3,7 +3,7 @@ const { validationResult } = require("express-validator");
 const controller = require("../middleware/modulemaster.middleware") ;
 const auth = require("../middleware/auth.middleware");
 const checkPermission = require('../middleware/checkPermission');
-const validator = require("../middleware/modulemaster.validator");
+const validator = require("../validators/moduleMaster.validators");
 
 // <-- your mongoose schema
 

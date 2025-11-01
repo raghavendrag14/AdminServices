@@ -18,9 +18,9 @@ const roleSchema = new mongoose.Schema(
     },
     privileges: [
       {
-        type: String,
-        required: true,
-        trim: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Privilege',
+        required: true
       }
     ]
   },

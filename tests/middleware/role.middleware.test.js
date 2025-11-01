@@ -63,7 +63,7 @@ describe('role.middleware controller', () => {
 
     const res = await request(app)
       .post('/roles')
-      .send({ roleName: 'User', roleCode: 'USER', privileges: ['read'] });
+      .send({ roleName: 'User', roleCode: 'USER', privileges: ['507f1f77bcf86cd799439011'] });
 
     expect(res.statusCode).toBe(201);
     expect(res.body.message).toBe('Role created');
@@ -82,7 +82,7 @@ describe('role.middleware controller', () => {
     Role.findOne.mockResolvedValue({ roleName: 'User' });
     const res = await request(app)
       .post('/roles')
-      .send({ roleName: 'User', roleCode: 'USER', privileges: ['read'] });
+      .send({ roleName: 'User', roleCode: 'USER', privileges: ['507f1f77bcf86cd799439011'] });
     expect(res.statusCode).toBe(400);
     expect(res.body.message).toBe('Role name already exists');
   });
@@ -92,7 +92,7 @@ describe('role.middleware controller', () => {
     Role.findById.mockResolvedValue(mockRole);
     const res = await request(app)
       .put('/roles')
-      .send({ id: 'roleid', roleName: 'New', roleCode: 'NEW', privileges: ['write'] });
+      .send({ id: 'roleid', roleName: 'New', roleCode: 'NEW', privileges: ['507f191e810c19729de860ea'] });
     expect(res.statusCode).toBe(200);
     expect(res.body.message).toBe('Role updated');
     expect(res.body.role.roleName).toBe('New');
