@@ -22,7 +22,11 @@ async function seed() {
   const privileges = await Privilege.create([
     { name: 'All Privileges', code: 'ALL' },
     { name: 'Read Only', code: 'READ' },
-    { name: 'Write', code: 'WRITE' }
+    { name: 'Write', code: 'WRITE' },
+    { name: 'View Users', code: 'VIEWUSER' },
+    { name: 'Create User', code: 'CREATEUSER' },
+    { name: 'Edit User', code: 'EDITUSER' },
+    { name: 'Delete User', code: 'DELETEUSER' }
   ]);
 
   // Create roles referencing privileges

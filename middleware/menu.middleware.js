@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const Menu = require("../models/menu")
 const menuDetails = require("../middleware/menu.middleware")
-
+const { validationResult } = require("express-validator");
 menuDetails.getAllMenu = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });

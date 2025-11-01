@@ -9,6 +9,7 @@ const authRoutes = require("./routes/auth.routes");
 const userRoutes = require("./routes/user.routes");
 const roleRoutes = require("./routes/role.routes")
 const modulemasterRoutes = require("./routes/modulemaster.routes");
+const menusRoutes = require("./routes/menu.routes");
 const app = express();
 
 // // Security + parsing
@@ -29,7 +30,7 @@ app.use(limiter);
 mongoose.connect(process.env.MONGODB_URI, {
   autoIndex: true, // for unique indexes in dev; consider disabling in prod once indexes are built
 })
-.then(() => console.log("MongoDB connected"))
+.then(() => console.log("MongoDB connected" + process.env.MONGODB_URI))
 .catch((e) => {
   console.error("MongoDB connection error:", e.message);
   process.exit(1);
@@ -40,6 +41,7 @@ app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/roles",roleRoutes );
 app.use("/modulemaster", modulemasterRoutes);
+app.use("/menus", menusRoutes);
 // 404 handler
 app.use((req, res) => res.status(404).json({ message: "Not found route" }));
 
